@@ -63,7 +63,7 @@
       </nav>
       <main>
         <!-- home page -->
-        <div id="home-page" class="d-block">
+        <div id="home-page" class="d-none">
           <h1>Home page</h1>
         </div>
         <!-- about us -->
@@ -75,8 +75,38 @@
           <h1>Contact us</h1>
         </div>
         <!-- register page -->
-        <div id="register-page" class="d-none">
+        <div id="register-page" class="d-block">
           <h1>Register page</h1>
+          <form>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="register-input-name"
+                placeholder="Your name"
+              />
+              <label for="register-input-name">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="register-input-email"
+                placeholder="name@example.com"
+              />
+              <label for="register-input-email">Email address</label>
+            </div>
+            <div class="form-floating">
+              <input
+                type="password"
+                class="form-control"
+                id="register-input-password"
+                placeholder="Password"
+              />
+              <label for="register-input-password">Password</label>
+            </div>
+            <button class="btn btn-danger">Register</button>
+          </form>
         </div>
         <!-- login page -->
         <div id="login-page" class="d-none">
