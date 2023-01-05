@@ -9,29 +9,41 @@ const REGISTERUSPAGELINK = document.getElementById(PAGES.REGISTER);
 
 function handlePageChange(pageToDisplay) {
   /* hide all pages */
-  HOMEPAGELINK.style.display = "none";
-  ABOUTUSPAGELINK.style.display = "none";
-  CONTACTUSPAGELINK.style.display = "none";
-  LOGINTUSPAGELINK.style.display = "none";
-  REGISTERUSPAGELINK.style.display = "none";
+  HOMEPAGELINK.classList.remove("d-block");
+  ABOUTUSPAGELINK.classList.remove("d-block");
+  CONTACTUSPAGELINK.classList.remove("d-block");
+  LOGINTUSPAGELINK.classList.remove("d-block");
+  REGISTERUSPAGELINK.classList.remove("d-block");
+  HOMEPAGELINK.classList.add("d-none");
+  ABOUTUSPAGELINK.classList.add("d-none");
+  CONTACTUSPAGELINK.classList.add("d-none");
+  LOGINTUSPAGELINK.classList.add("d-none");
+  REGISTERUSPAGELINK.classList.add("d-none");
 
   switch (pageToDisplay) {
     case PAGES.HOME:
-      HOMEPAGELINK.style.display = "block";
+      HOMEPAGELINK.classList.remove("d-none");
+      HOMEPAGELINK.classList.add("d-block");
       break;
     case PAGES.ABOUT:
-      ABOUTUSPAGELINK.style.display = "block";
+      ABOUTUSPAGELINK.classList.remove("d-none");
+      ABOUTUSPAGELINK.classList.add("d-block");
       break;
     case PAGES.CONTACT:
-      CONTACTUSPAGELINK.style.display = "block";
+      CONTACTUSPAGELINK.classList.remove("d-none");
+      CONTACTUSPAGELINK.classList.add("d-block");
       break;
     case PAGES.LOGIN:
-      LOGINTUSPAGELINK.style.display = "block";
+      LOGINTUSPAGELINK.classList.remove("d-none");
+      LOGINTUSPAGELINK.classList.add("d-block");
       break;
     case PAGES.REGISTER:
-      REGISTERUSPAGELINK.style.display = "block";
+      REGISTERUSPAGELINK.classList.remove("d-none");
+      REGISTERUSPAGELINK.classList.add("d-block");
       break;
   }
 }
 
-export { handlePageChange };
+function anotherFunction() {}
+
+export { handlePageChange, anotherFunction };
