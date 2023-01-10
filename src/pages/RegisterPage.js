@@ -77,14 +77,46 @@ const checkIfCanEnableBtn = () =>
 
 btnRegister.addEventListener("click", () => {
   if (!(nameOk && emailOk && passwordOk)) {
+    //if someone changed the html from dev tools
     return;
   }
-  /*
-    let user = {
-      name,
-      email,
-      password
+  let users = localStorage.getItem("users");
+  if (!users) {
+    //the first user
+    users = [
+      {
+        name: inputName.value,
+        email: inputEmail.value,
+        password: inputPassword.value,
+      },
+    ];
+    localStorage.setItem("users", JSON.stringify(users));
+    /*
+      JSON.stringify(users) - convert array of objects to string
+      localStorage.setItem - store the json string to localStorage with 
+        key users 
+        and value users as json string
+    */
+  } else {
+    //we have users
+    users = JSON.parse(users); // convert from string to array of objects
+    // console.log("users from localStorage", users);
+    for (let user of users) {
+      if (user.email === inputEmail.value) {
+        //display msg - email already exists
+        console.log("email already exists");
+        return;
+      }
     }
-    [users]
-  */
+    //user provided new email
+    users = [
+      ...users,
+      {
+        name: inputName.value,
+        email: inputEmail.value,
+        password: inputPassword.value,
+      },
+    ];
+    localStorage.setItem("users", JSON.stringify(users));
+  }
 });
