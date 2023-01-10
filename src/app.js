@@ -1,5 +1,6 @@
 import PAGES from "./models/pageModel.js";
 import { handlePageChange } from "./routes/router.js";
+import "./pages/RegisterPage.js";
 // console.log("🚀 ~ file: app.js:3 ~ handlePageChange", handlePageChange);
 
 // console.log(PAGES);
