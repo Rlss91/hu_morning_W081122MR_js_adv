@@ -7,7 +7,32 @@ let nameOk = false;
 let emailOk = false;
 let passwordOk = false;
 
-inputName.addEventListener("change", () => {
+window.addEventListener("load", () => {
+  //when page loaded
+  if (inputName.value !== "") {
+    checkNameInput();
+  }
+  if (inputEmail.value !== "") {
+    checkEmailInput();
+  }
+  if (inputPassword.value !== "") {
+    checkPasswordInput();
+  }
+});
+
+inputName.addEventListener("input", () => {
+  checkNameInput();
+});
+
+inputEmail.addEventListener("input", () => {
+  checkEmailInput();
+});
+
+inputPassword.addEventListener("input", () => {
+  checkPasswordInput();
+});
+
+const checkNameInput = () => {
   const reg = new RegExp("^[A-Z][a-z0-9-\\s]{2,255}$", "g");
   //   console.log(reg.test(inputName.value));
   if (reg.test(inputName.value)) {
@@ -22,9 +47,9 @@ inputName.addEventListener("change", () => {
     nameOk = false;
   }
   checkIfCanEnableBtn();
-});
+};
 
-inputEmail.addEventListener("change", () => {
+const checkEmailInput = () => {
   const reg = new RegExp(
     "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
     "ig"
@@ -41,9 +66,9 @@ inputEmail.addEventListener("change", () => {
     emailOk = false;
   }
   checkIfCanEnableBtn();
-});
+};
 
-inputPassword.addEventListener("change", () => {
+const checkPasswordInput = () => {
   const reg = new RegExp(
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,255}$",
     "g"
@@ -62,7 +87,7 @@ inputPassword.addEventListener("change", () => {
     passwordOk = false;
   }
   checkIfCanEnableBtn();
-});
+};
 
 const checkIfCanEnableBtn = () =>
   (btnRegister.disabled = !(nameOk && emailOk && passwordOk));
