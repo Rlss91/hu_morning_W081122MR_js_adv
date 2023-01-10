@@ -1,3 +1,6 @@
+import PAGES from "../models/pageModel.js";
+import { handlePageChange } from "../routes/router.js";
+
 const inputName = document.getElementById("register-input-name");
 const inputEmail = document.getElementById("register-input-email");
 const inputPassword = document.getElementById("register-input-password");
@@ -144,4 +147,5 @@ btnRegister.addEventListener("click", () => {
     ];
     localStorage.setItem("users", JSON.stringify(users));
   }
+  handlePageChange(PAGES.LOGIN);
 });

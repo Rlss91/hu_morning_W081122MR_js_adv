@@ -7,10 +7,22 @@ import "./pages/RegisterPage.js";
 
 const navHomeLink = document.getElementById("nav-home-link");
 const navAboutusLink = document.getElementById("nav-aboutus-link");
+const navContactusLink = document.getElementById("nav-contactus-link");
+const navRegisterPageLink = document.getElementById("nav-register-page");
+const navLoginPageLink = document.getElementById("nav-login-page");
 
 navHomeLink.addEventListener("click", function () {
   handlePageChange(PAGES.HOME);
 });
 navAboutusLink.addEventListener("click", function () {
   handlePageChange(PAGES.ABOUT);
+});
+navContactusLink.addEventListener("click", function () {
+  handlePageChange(PAGES.CONTACT);
+});
+navRegisterPageLink.addEventListener("click", function () {
+  handlePageChange(PAGES.REGISTER);
+});
+navLoginPageLink.addEventListener("click", function () {
+  handlePageChange(PAGES.LOGIN);
 });
