@@ -77,7 +77,7 @@
         <!-- register page -->
         <div id="register-page" class="d-block">
           <h1>Register page</h1>
-          <form>
+          <form onsubmit="event.preventDefault()">
             <div class="form-floating mb-3">
               <input
                 type="text"
@@ -126,7 +126,9 @@
             >
               Name rules
             </div>
-            <button class="btn btn-danger">Register</button>
+            <button class="btn btn-danger" disabled="true" id="register-btn">
+              Register
+            </button>
           </form>
         </div>
         <!-- login page -->
