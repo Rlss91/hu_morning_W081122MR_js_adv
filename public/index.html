@@ -77,7 +77,7 @@
           <h1>Contact us</h1>
         </div>
         <!-- register page -->
-        <div id="register-page" class="d-block">
+        <div id="register-page" class="d-none">
           <h1>Register page</h1>
           <form onsubmit="event.preventDefault()">
             <div class="form-floating mb-3">
@@ -134,8 +134,46 @@
           </form>
         </div>
         <!-- login page -->
-        <div id="login-page" class="d-none">
+        <div id="login-page" class="d-block">
           <h1>Login page</h1>
+          <form onsubmit="event.preventDefault()">
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="login-input-email"
+                placeholder="name@example.com"
+              />
+              <label for="login-input-email">Email address</label>
+            </div>
+            <div
+              class="alert alert-danger d-none"
+              role="alert"
+              id="login-alert-email"
+            >
+              Email rules
+            </div>
+            <div class="form-floating">
+              <input
+                type="password"
+                class="form-control"
+                id="login-input-password"
+                placeholder="Password"
+              />
+              <label for="login-input-password">Password</label>
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Check me out</label
+              >
+            </div>
+            <button class="btn btn-primary" id="login-btn">Submit</button>
+          </form>
         </div>
       </main>
       <footer class="border-top pt-3 d-flex justify-content-center">

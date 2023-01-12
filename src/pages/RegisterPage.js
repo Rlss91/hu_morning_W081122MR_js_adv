@@ -1,5 +1,6 @@
 import PAGES from "../models/pageModel.js";
 import { handlePageChange } from "../routes/router.js";
+import validateEmail from "../validation/validateEmail.js";
 
 const inputName = document.getElementById("register-input-name");
 const inputEmail = document.getElementById("register-input-email");
@@ -53,11 +54,8 @@ const checkNameInput = () => {
 };
 
 const checkEmailInput = () => {
-  const reg = new RegExp(
-    "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
-    "ig"
-  );
-  if (reg.test(inputEmail.value)) {
+  let errorArr = validateEmail(inputEmail.value);
+  if (errorArr.length === 0) {
     //the text is ok
     inputEmail.classList.remove("is-invalid");
     document.getElementById("register-alert-email").classList.add("d-none");
@@ -66,10 +64,31 @@ const checkEmailInput = () => {
     //the text is not ok
     inputEmail.classList.add("is-invalid");
     document.getElementById("register-alert-email").classList.remove("d-none");
+    document.getElementById("register-alert-email").innerHTML =
+      errorArr.join("<br>");
     emailOk = false;
   }
   checkIfCanEnableBtn();
 };
+
+// const checkEmailInput = () => {
+//   const reg = new RegExp(
+//     "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+//     "ig"
+//   );
+//   if (reg.test(inputEmail.value)) {
+//     //the text is ok
+//     inputEmail.classList.remove("is-invalid");
+//     document.getElementById("register-alert-email").classList.add("d-none");
+//     emailOk = true;
+//   } else {
+//     //the text is not ok
+//     inputEmail.classList.add("is-invalid");
+//     document.getElementById("register-alert-email").classList.remove("d-none");
+//     emailOk = false;
+//   }
+//   checkIfCanEnableBtn();
+// };
 
 const checkPasswordInput = () => {
   const reg = new RegExp(
