@@ -1,7 +1,7 @@
 import validate from "./validate.js";
 const validateEmail = (value) => {
   const reg = new RegExp(
-    "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+    "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
     "ig"
   );
   return validate(reg, value, 5, 255).map((err) => `email is ${err}`);
