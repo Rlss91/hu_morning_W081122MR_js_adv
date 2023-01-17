@@ -19,3 +19,14 @@ myPromise
   .catch((err) => {
     console.log(err);
   });
+
+let myPromiseTK = new Promise((ok, not) => {
+  setTimeout(() => {
+    // console.log("😎😎😎🦄🦄🦄");
+    ok("😎😎😎🦄🦄🦄");
+  }, 3000);
+});
+
+myPromiseTK.then((smile) => {
+  console.log("smile", smile);
+});
