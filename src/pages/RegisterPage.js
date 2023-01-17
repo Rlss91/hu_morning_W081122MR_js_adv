@@ -1,6 +1,8 @@
 import PAGES from "../models/pageModel.js";
 import { handlePageChange } from "../routes/router.js";
 import validateEmail from "../validation/validateEmail.js";
+import validatePassword from "../validation/validatePassword.js";
+import validateName from "../validation/validateName.js";
 
 const inputName = document.getElementById("register-input-name");
 const inputEmail = document.getElementById("register-input-email");
@@ -37,9 +39,9 @@ inputPassword.addEventListener("input", () => {
 });
 
 const checkNameInput = () => {
-  const reg = new RegExp("^[A-Z][a-z0-9-\\s]{2,255}$", "g");
+  let errorArr = validateName(inputName.value);
   //   console.log(reg.test(inputName.value));
-  if (reg.test(inputName.value)) {
+  if (errorArr.length === 0) {
     //the text is ok
     inputName.classList.remove("is-invalid");
     document.getElementById("register-alert-name").classList.add("d-none");
@@ -48,6 +50,8 @@ const checkNameInput = () => {
     //the text is not ok
     inputName.classList.add("is-invalid");
     document.getElementById("register-alert-name").classList.remove("d-none");
+    document.getElementById("register-alert-name").innerHTML =
+      errorArr.join("<br>");
     nameOk = false;
   }
   checkIfCanEnableBtn();
@@ -91,11 +95,8 @@ const checkEmailInput = () => {
 // };
 
 const checkPasswordInput = () => {
-  const reg = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,255}$",
-    "g"
-  );
-  if (reg.test(inputPassword.value)) {
+  let errorArr = validatePassword(inputPassword.value);
+  if (errorArr.length === 0) {
     //the text is ok
     inputPassword.classList.remove("is-invalid");
     document.getElementById("register-alert-password").classList.add("d-none");
@@ -106,6 +107,8 @@ const checkPasswordInput = () => {
     document
       .getElementById("register-alert-password")
       .classList.remove("d-none");
+    document.getElementById("register-alert-password").innerHTML =
+      errorArr.join("<br>");
     passwordOk = false;
   }
   checkIfCanEnableBtn();
