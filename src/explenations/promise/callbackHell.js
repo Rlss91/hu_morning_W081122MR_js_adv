@@ -64,3 +64,4 @@ const promiseHeaven = async () => {
     console.log(err);
   }
 };
+promiseHeaven();
