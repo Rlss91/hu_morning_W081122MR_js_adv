@@ -65,8 +65,40 @@
       </nav>
       <main>
         <!-- home page -->
-        <div id="home-page" class="d-none">
+        <div id="home-page" class="d-block">
           <h1>Home page</h1>
+          <div id="propertiesGallery">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card">
+                  <img
+                    src="./assets/imgs/1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                  </ul>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-success">
+                      Success
+                    </button>
+                    <button type="button" class="btn btn-warning">
+                      Warning
+                    </button>
+                    <button type="button" class="btn btn-danger">Danger</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- about us -->
         <div id="about-us" class="d-none">
@@ -134,7 +166,7 @@
           </form>
         </div>
         <!-- login page -->
-        <div id="login-page" class="d-block">
+        <div id="login-page" class="d-none">
           <h1>Login page</h1>
           <form onsubmit="event.preventDefault()">
             <div class="form-floating mb-3">
