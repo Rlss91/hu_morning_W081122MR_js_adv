@@ -9,5 +9,6 @@ window.addEventListener("load", () => {
     return;
   }
   propertiesArr = JSON.parse(propertiesArr);
+  //passing propertiesArr to PropertiesGallery.js
   initialPropertiesGallery(propertiesArr);
 });
