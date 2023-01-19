@@ -66,5 +66,6 @@ loginBtn.addEventListener("click", () => {
     console.log("invalid email and/or password");
     return;
   }
+
   handlePageChange(PAGES.HOME);
 });

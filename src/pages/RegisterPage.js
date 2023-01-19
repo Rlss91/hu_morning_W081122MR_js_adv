@@ -3,6 +3,7 @@ import { handlePageChange } from "../routes/router.js";
 import validateEmail from "../validation/validateEmail.js";
 import validatePassword from "../validation/validatePassword.js";
 import validateName from "../validation/validateName.js";
+import User from "../models/User.js";
 
 const inputName = document.getElementById("register-input-name");
 const inputEmail = document.getElementById("register-input-email");
@@ -131,15 +132,16 @@ btnRegister.addEventListener("click", () => {
     return;
   }
   let users = localStorage.getItem("users");
+  let newUser = new User(
+    inputName.value,
+    inputEmail.value,
+    inputPassword.value
+  );
   if (!users) {
     //the first user
-    users = [
-      {
-        name: inputName.value,
-        email: inputEmail.value,
-        password: inputPassword.value,
-      },
-    ];
+    users = [newUser];
+    // let user = new User(inputName.value, inputEmail.value, inputPassword.value);
+    // users = [user]
     localStorage.setItem("users", JSON.stringify(users));
     /*
       JSON.stringify(users) - convert array of objects to string
@@ -159,14 +161,7 @@ btnRegister.addEventListener("click", () => {
       }
     }
     //user provided new email
-    users = [
-      ...users,
-      {
-        name: inputName.value,
-        email: inputEmail.value,
-        password: inputPassword.value,
-      },
-    ];
+    users = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(users));
   }
   handlePageChange(PAGES.LOGIN);
