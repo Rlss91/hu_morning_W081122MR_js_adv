@@ -56,6 +56,4 @@ const setInitialData = () => {
   localStorage.setItem("props", JSON.stringify(createData()));
 };
 
-window.addEventListener("load", () => {
-  setInitialData();
-});
+setInitialData();
