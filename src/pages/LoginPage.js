@@ -66,6 +66,14 @@ loginBtn.addEventListener("click", () => {
     console.log("invalid email and/or password");
     return;
   }
-
+  //remember who connected
+  localStorage.setItem(
+    "token",
+    JSON.stringify({
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    })
+  );
   handlePageChange(PAGES.HOME);
 });
