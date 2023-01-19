@@ -4,13 +4,13 @@ const findMaxIndexPromise = (arr) => {
       // findMaxIndexPromise()
       reject("the array undefined");
     }
-    if (!arr.length) {
-      // findMaxIndexPromise([])
-      reject("the array empty");
-    }
     if (!Array.isArray(arr)) {
       // findMaxIndexPromise(5)
       reject("not arr");
+    }
+    if (!arr.length) {
+      // findMaxIndexPromise([])
+      reject("the array empty");
     }
     let maxInx = 0;
     for (let i = 0; i < arr.length; i++) {
