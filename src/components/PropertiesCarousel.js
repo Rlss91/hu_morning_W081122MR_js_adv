@@ -1,12 +1,27 @@
 let propertiesArr;
 let carouselDiv;
-let showIdx = 0; //index(array) of the image that we display now
-let animationStarted = 0;
+let showIdx; //index(array) of the image that we display now
+let animationStarted;
 //this function will transfer data from homepage to this page
 const initialPropertiesCarousel = (propertiesArrFromHomePage) => {
-  propertiesArr = propertiesArrFromHomePage;
   carouselDiv = document.getElementById("home-page-properties-carousel");
+  initializeBtns();
+  updatePropertiesCarousel(propertiesArrFromHomePage);
+};
+
+const updatePropertiesCarousel = (propertiesArrFromHomePage) => {
+  /*
+    this function will get data from homepage and create new carousel.
+    if the carousel already exists it will remove the old one and
+    create new one
+  */
+  showIdx = 0;
+  animationStarted = 0;
+  propertiesArr = propertiesArrFromHomePage;
   createCarousel();
+};
+
+const initializeBtns = () => {
   document.getElementById("back-carusel-btn").addEventListener("click", () => {
     if (animationStarted !== 0) {
       return;
@@ -24,7 +39,6 @@ const initialPropertiesCarousel = (propertiesArrFromHomePage) => {
       imgToHide.removeEventListener("animationend", hideImgAnim); //remove event after executed
       imgToHide.classList.add("opacity-0");
       imgToHide.classList.remove("fade-out");
-      console.log("opacity-0 added, showIdx", showIdx);
       animationStarted--;
     };
     imgToHide.addEventListener("animationend", hideImgAnim);
@@ -67,7 +81,6 @@ const initialPropertiesCarousel = (propertiesArrFromHomePage) => {
       imgToHide.removeEventListener("animationend", hideImgAnim); //remove event after executed
       imgToHide.classList.add("opacity-0");
       imgToHide.classList.remove("fade-out");
-      console.log("opacity-0 added, showIdx", showIdx);
       animationStarted--;
     };
     imgToHide.addEventListener("animationend", hideImgAnim);
@@ -110,4 +123,4 @@ const createCarousel = () => {
     .classList.remove("opacity-0");
 };
 
-export default initialPropertiesCarousel;
+export { initialPropertiesCarousel, updatePropertiesCarousel };

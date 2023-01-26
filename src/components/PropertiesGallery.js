@@ -2,8 +2,17 @@ let propertiesArr;
 let galleryDiv;
 //this function will transfer data from homepage to this page
 const initialPropertiesGallery = (propertiesArrFromHomePage) => {
-  propertiesArr = propertiesArrFromHomePage;
   galleryDiv = document.getElementById("home-page-properties-gallery");
+  updatePropertiesGallery(propertiesArrFromHomePage);
+};
+
+const updatePropertiesGallery = (propertiesArrFromHomePage) => {
+  /*
+    this function will get data from homepage and create new gallery.
+    if the gallery already exists it will remove the old one and
+    create new one
+  */
+  propertiesArr = propertiesArrFromHomePage;
   createGallery();
 };
 
@@ -50,4 +59,4 @@ const createGallery = () => {
   }
 };
 
-export default initialPropertiesGallery;
+export { initialPropertiesGallery, updatePropertiesGallery };

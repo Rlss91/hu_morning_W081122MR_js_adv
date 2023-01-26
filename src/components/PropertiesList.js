@@ -3,9 +3,18 @@ let listDiv;
 let isAdmin;
 //this function will transfer data from homepage to this page
 const initialPropertiesList = (propertiesArrFromHomePage, isAdminParam) => {
-  propertiesArr = propertiesArrFromHomePage;
   listDiv = document.getElementById("home-page-properties-list");
   isAdmin = isAdminParam;
+  updatePropertiesList(propertiesArrFromHomePage);
+};
+
+const updatePropertiesList = (propertiesArrFromHomePage) => {
+  /*
+    this function will get data from homepage and create new list.
+    if the list already exists it will remove the old one and
+    create new one
+  */
+  propertiesArr = propertiesArrFromHomePage;
   createList();
 };
 
@@ -57,4 +66,4 @@ const createList = () => {
   }
 };
 
-export default initialPropertiesList;
+export { initialPropertiesList, updatePropertiesList };

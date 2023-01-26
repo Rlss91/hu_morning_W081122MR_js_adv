@@ -1,7 +1,15 @@
-import Property from "../models/Property.js";
-import initialPropertiesGallery from "../components/PropertiesGallery.js";
-import initialPropertiesList from "../components/PropertiesList.js";
-import initialPropertiesCarousel from "../components/PropertiesCarousel.js";
+import {
+  initialPropertiesGallery,
+  updatePropertiesGallery,
+} from "../components/PropertiesGallery.js";
+import {
+  initialPropertiesList,
+  updatePropertiesList,
+} from "../components/PropertiesList.js";
+import {
+  initialPropertiesCarousel,
+  updatePropertiesCarousel,
+} from "../components/PropertiesCarousel.js";
 
 let propertiesArr;
 let displayNow; // display that we can see now
