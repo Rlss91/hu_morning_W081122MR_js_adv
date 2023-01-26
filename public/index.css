@@ -1,5 +1,5 @@
 .carusel {
-  width: 50vw;
+  width: 100%;
   height: 66.6vh;
 }
 .img-container {
@@ -14,10 +14,10 @@
 }
 
 .fade-in {
-  animation: fadein 2s ease forwards;
+  animation: fadein 1s ease forwards;
 }
 .fade-out {
-  animation: fadein 2s ease forwards reverse;
+  animation: fadein 1s ease forwards reverse;
 }
 
 /* create animation called fadein */

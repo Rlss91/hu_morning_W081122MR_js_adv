@@ -71,6 +71,17 @@
         <!-- home page -->
         <div id="home-page" class="d-block">
           <h1>Home page</h1>
+          <div>
+            <button type="button" class="btn btn-info" id="homeDisplayList">
+              <i class="bi bi-card-list"></i>
+            </button>
+            <button type="button" class="btn btn-info" id="homeDisplayGallery">
+              <i class="bi bi-microsoft"></i>
+            </button>
+            <button type="button" class="btn btn-info" id="homeDisplayCousel">
+              <i class="bi bi-file-earmark-slides"></i>
+            </button>
+          </div>
           <div id="propertiesGallery" class="d-none">
             <div
               class="row row-cols-1 row-cols-md-3 g-4"
@@ -80,7 +91,7 @@
           <div id="propertiesList" class="d-none">
             <ul class="list-group" id="home-page-properties-list"></ul>
           </div>
-          <div class="carusel" id="propertiesCarusel">
+          <div class="carusel d-none" id="propertiesCarusel">
             <div class="img-container" id="home-page-properties-carousel"></div>
             <div class="d-flex justify-content-around">
               <button
