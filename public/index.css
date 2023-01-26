@@ -1,6 +1,6 @@
 .carusel {
-  width: 50em;
-  height: 50em;
+  width: 50vw;
+  height: 66.6vh;
 }
 .img-container {
   position: relative;
