@@ -75,5 +75,6 @@ loginBtn.addEventListener("click", () => {
       isAdmin: user.isAdmin,
     })
   );
-  handlePageChange(PAGES.HOME);
+  // handlePageChange(PAGES.HOME);
+  location.reload(); // refresh the page
 });

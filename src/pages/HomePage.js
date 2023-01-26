@@ -21,10 +21,25 @@ window.addEventListener("load", () => {
     return;
   }
   propertiesArr = JSON.parse(propertiesArr);
+  let isAdmin = checkIfAdmin();
   //passing propertiesArr to PropertiesGallery.js
   initialPropertiesGallery(propertiesArr);
-  initialPropertiesList(propertiesArr);
+  initialPropertiesList(propertiesArr, isAdmin);
   initialPropertiesCarousel(propertiesArr);
+  initializeElements();
+  initializeBtns();
+});
+
+const checkIfAdmin = () => {
+  let token = localStorage.getItem("token");
+  if (!token) {
+    return false;
+  }
+  token = JSON.parse(token);
+  return token.isAdmin;
+};
+
+const initializeElements = () => {
   /* btns */
   homeDisplayList = document.getElementById("homeDisplayList");
   homeDisplayGallery = document.getElementById("homeDisplayGallery");
@@ -33,10 +48,9 @@ window.addEventListener("load", () => {
   propertiesGallery = document.getElementById("propertiesGallery");
   propertiesList = document.getElementById("propertiesList");
   propertiesCarusel = document.getElementById("propertiesCarusel");
-  displayNow = propertiesGallery; // choose who we want to display
+  displayNow = propertiesList; // choose who we want to display
   displayToDisplay(displayNow);
-  initializeBtns();
-});
+};
 
 const initializeBtns = () => {
   homeDisplayList.addEventListener("click", () => {

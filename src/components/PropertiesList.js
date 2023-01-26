@@ -1,13 +1,23 @@
 let propertiesArr;
 let listDiv;
+let isAdmin;
 //this function will transfer data from homepage to this page
-const initialPropertiesList = (propertiesArrFromHomePage) => {
+const initialPropertiesList = (propertiesArrFromHomePage, isAdminParam) => {
   propertiesArr = propertiesArrFromHomePage;
   listDiv = document.getElementById("home-page-properties-list");
+  isAdmin = isAdminParam;
   createList();
 };
 
 const createItem = (name, description, price, img) => {
+  const adminBtns = `
+  <button type="button" class="btn btn-warning w-100">
+    <i class="bi bi-pen-fill"></i> Edit
+  </button>
+  <button type="button" class="btn btn-danger w-100">
+    <i class="bi bi-x-circle-fill"></i> Delete
+  </button>
+  `;
   return `
   <li class="list-group-item">
     <div class="row">
@@ -27,14 +37,9 @@ const createItem = (name, description, price, img) => {
         </div>
         <div class="col-md-2">
         <button type="button" class="btn btn-success w-100">
-            Success
+          <i class="bi bi-currency-dollar"></i> Buy now
         </button>
-        <button type="button" class="btn btn-warning w-100">
-            Warning
-        </button>
-        <button type="button" class="btn btn-danger w-100">
-            Danger
-        </button>
+        ${isAdmin ? adminBtns : ""}
         </div>
     </div>
     </li>
