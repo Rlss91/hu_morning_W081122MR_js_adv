@@ -63,8 +63,9 @@ const createItem = (name, description, price, img, idx) => {
 
 const createList = () => {
   let idx = 0;
+  let innerHTML = "";
   for (let property of propertiesArr) {
-    listDiv.innerHTML += createItem(
+    innerHTML += createItem(
       property.name,
       property.description,
       property.price,
@@ -73,6 +74,7 @@ const createList = () => {
     );
     idx++;
   }
+  listDiv.innerHTML = innerHTML;
   let deleteBtns = document.querySelectorAll("[id^='propertyListDeleteBtn-']");
   for (let deleteBtn of deleteBtns) {
     deleteBtn.addEventListener("click", (ev) => {
