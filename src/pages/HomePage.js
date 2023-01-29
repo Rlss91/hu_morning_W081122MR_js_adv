@@ -70,6 +70,26 @@ const initializeBtns = () => {
   homeDisplayCousel.addEventListener("click", () => {
     displayToDisplay(propertiesCarusel);
   });
+  document
+    .getElementById("homeDisplaySortASC")
+    .addEventListener("click", () => {
+      sortPropertys();
+    });
+  document
+    .getElementById("homeDisplaySortDESC")
+    .addEventListener("click", () => {
+      sortPropertys(false);
+    });
+  //need to fix bug on search again
+  document
+    .getElementById("homeDisplaySearch")
+    .addEventListener("input", (ev) => {
+      let regex = new RegExp("^" + ev.target.value, "ig");
+      propertiesArr = JSON.parse(localStorage.getItem("props")).filter((item) =>
+        regex.test(item.name)
+      );
+      updateDisplayAndLocalStorage(false);
+    });
 };
 
 const displayToDisplay = (toDisplay) => {
@@ -83,15 +103,28 @@ const displayToDisplay = (toDisplay) => {
   displayNow = toDisplay;
 };
 
-// const updateDisplayAndLocalStorage = ()=>{
-
-// }
+const updateDisplayAndLocalStorage = (save = true) => {
+  if (save) {
+    localStorage.setItem("props", JSON.stringify(propertiesArr)); // update local storage
+  }
+  updatePropertiesGallery(propertiesArr); // update gallery
+  updatePropertiesList(propertiesArr); // update list
+  updatePropertiesCarousel(propertiesArr); // update carousel
+};
 
 const deleteProperty = (index) => {
   index = +index; //convert string to number
   propertiesArr = propertiesArr.filter((item, idx) => idx !== index); //delete property by index
-  localStorage.setItem("props", JSON.stringify(propertiesArr)); // update local storage
-  updatePropertiesGallery(propertiesArr); // update gallery
-  updatePropertiesList(propertiesArr); // update list
-  updatePropertiesCarousel(propertiesArr); // update carousel
+  updateDisplayAndLocalStorage();
+};
+
+const sortPropertys = (asc = true) => {
+  if (asc) {
+    // from a to z
+    propertiesArr.sort((a, b) => a.name.localeCompare(b.name));
+  } else {
+    // from z to a
+    propertiesArr.sort((a, b) => b.name.localeCompare(a.name));
+  }
+  updateDisplayAndLocalStorage(false);
 };

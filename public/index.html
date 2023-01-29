@@ -71,16 +71,45 @@
         <!-- home page -->
         <div id="home-page" class="d-block">
           <h1>Home page</h1>
-          <div>
-            <button type="button" class="btn btn-info" id="homeDisplayList">
-              <i class="bi bi-card-list"></i>
-            </button>
-            <button type="button" class="btn btn-info" id="homeDisplayGallery">
-              <i class="bi bi-microsoft"></i>
-            </button>
-            <button type="button" class="btn btn-info" id="homeDisplayCousel">
-              <i class="bi bi-file-earmark-slides"></i>
-            </button>
+          <div class="d-flex justify-content-between mb-2">
+            <div>
+              <button type="button" class="btn btn-info" id="homeDisplayList">
+                <i class="bi bi-card-list"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                id="homeDisplayGallery"
+              >
+                <i class="bi bi-microsoft"></i>
+              </button>
+              <button type="button" class="btn btn-info" id="homeDisplayCousel">
+                <i class="bi bi-file-earmark-slides"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                id="homeDisplaySortASC"
+              >
+                <i class="bi bi-sort-alpha-down"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info"
+                id="homeDisplaySortDESC"
+              >
+                <i class="bi bi-sort-alpha-up"></i>
+              </button>
+            </div>
+            <form class="d-flex align-self-end" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="homeDisplaySearch"
+              />
+            </form>
           </div>
           <div id="propertiesGallery" class="d-none">
             <div
