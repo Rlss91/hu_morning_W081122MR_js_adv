@@ -64,6 +64,26 @@ const createItem = (name, description, price, img, idx) => {
 const createList = () => {
   let idx = 0;
   let innerHTML = "";
+  const handleDeleteBtnClick = (ev) => {
+    let idxFromId = ev.target.id.split("-"); // split the id to array
+    if (!ev.target.id) {
+      /*
+        if press on icon then there is no id
+        then we need to take the id of the parent which is btn
+      */
+      idxFromId = ev.target.parentElement.id.split("-");
+    }
+    deleteProperty(idxFromId[1]);
+  };
+  //get all old btns
+  let deleteBtnsBefore = document.querySelectorAll(
+    "[id^='propertyListDeleteBtn-']"
+  );
+  //remove old events
+  for (let deleteBtn of deleteBtnsBefore) {
+    deleteBtn.removeEventListener("click", handleDeleteBtnClick);
+  }
+  //create new elements and remove old ones
   for (let property of propertiesArr) {
     innerHTML += createItem(
       property.name,
@@ -75,12 +95,10 @@ const createList = () => {
     idx++;
   }
   listDiv.innerHTML = innerHTML;
+  //add events to new btns
   let deleteBtns = document.querySelectorAll("[id^='propertyListDeleteBtn-']");
   for (let deleteBtn of deleteBtns) {
-    deleteBtn.addEventListener("click", (ev) => {
-      let idxFromId = ev.target.id.split("-"); // split the id to array
-      deleteProperty(idxFromId[1]);
-    });
+    deleteBtn.addEventListener("click", handleDeleteBtnClick);
   }
 };
 

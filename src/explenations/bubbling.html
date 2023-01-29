@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #d1 {
+        background-color: red;
+        width: 5rem;
+        height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #d2 {
+        width: 80%;
+        height: 80%;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="d1">
+      <div id="d2"></div>
+    </div>
+    <script>
+      document.getElementById("d1").addEventListener("click", (ev1) => {
+        // if (ev1.bubbles) {
+        //   return;
+        // }
+        console.log("ev1", ev1);
+        console.log("bubbles", ev1.bubbles);
+      });
+      // document.getElementById("d2").addEventListener("click", (ev2) => {
+      //   // ev2.stopImmediatePropagation();
+      //   // ev2.stopPropagation();
+      //   // ev2.preventDefault();
+      //   console.log("ev2", ev2);
+      // });
+    </script>
+  </body>
+</html>
