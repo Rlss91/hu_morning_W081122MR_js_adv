@@ -1,10 +1,16 @@
 let propertiesArr;
 let listDiv;
 let isAdmin;
+let deleteProperty;
 //this function will transfer data from homepage to this page
-const initialPropertiesList = (propertiesArrFromHomePage, isAdminParam) => {
+const initialPropertiesList = (
+  propertiesArrFromHomePage,
+  isAdminParam,
+  deletePropertyFromHomePage
+) => {
   listDiv = document.getElementById("home-page-properties-list");
   isAdmin = isAdminParam;
+  deleteProperty = deletePropertyFromHomePage;
   updatePropertiesList(propertiesArrFromHomePage);
 };
 
@@ -18,12 +24,12 @@ const updatePropertiesList = (propertiesArrFromHomePage) => {
   createList();
 };
 
-const createItem = (name, description, price, img) => {
+const createItem = (name, description, price, img, idx) => {
   const adminBtns = `
   <button type="button" class="btn btn-warning w-100">
     <i class="bi bi-pen-fill"></i> Edit
   </button>
-  <button type="button" class="btn btn-danger w-100">
+  <button type="button" class="btn btn-danger w-100" id="propertyListDeleteBtn-${idx}">
     <i class="bi bi-x-circle-fill"></i> Delete
   </button>
   `;
@@ -56,13 +62,23 @@ const createItem = (name, description, price, img) => {
 };
 
 const createList = () => {
+  let idx = 0;
   for (let property of propertiesArr) {
     listDiv.innerHTML += createItem(
       property.name,
       property.description,
       property.price,
-      property.imgUrl
+      property.imgUrl,
+      idx
     );
+    idx++;
+  }
+  let deleteBtns = document.querySelectorAll("[id^='propertyListDeleteBtn-']");
+  for (let deleteBtn of deleteBtns) {
+    deleteBtn.addEventListener("click", (ev) => {
+      let idxFromId = ev.target.id.split("-"); // split the id to array
+      deleteProperty(idxFromId[1]);
+    });
   }
 };
 

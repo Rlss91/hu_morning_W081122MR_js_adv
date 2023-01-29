@@ -32,7 +32,7 @@ window.addEventListener("load", () => {
   let isAdmin = checkIfAdmin();
   //passing propertiesArr to PropertiesGallery.js
   initialPropertiesGallery(propertiesArr);
-  initialPropertiesList(propertiesArr, isAdmin);
+  initialPropertiesList(propertiesArr, isAdmin, deleteProperty);
   initialPropertiesCarousel(propertiesArr);
   initializeElements();
   initializeBtns();
@@ -81,4 +81,17 @@ const displayToDisplay = (toDisplay) => {
   toDisplay.classList.add("d-block");
   //this is what we displaying now
   displayNow = toDisplay;
+};
+
+// const updateDisplayAndLocalStorage = ()=>{
+
+// }
+
+const deleteProperty = (index) => {
+  index = +index; //convert string to number
+  propertiesArr = propertiesArr.filter((item, idx) => idx !== index); //delete property by index
+  localStorage.setItem("props", JSON.stringify(propertiesArr)); // update local storage
+  updatePropertiesGallery(propertiesArr); // update gallery
+  updatePropertiesList(propertiesArr); // update list
+  updatePropertiesCarousel(propertiesArr); // update carousel
 };
