@@ -32,4 +32,21 @@ const showPopup = () => {
   editPropertiesPopup.classList.remove("d-none");
 };
 
-export { initPopup, showPopup };
+const hidePopup = () => {
+  editPropertiesPopup.classList.add("d-none");
+};
+
+window.addEventListener("load", () => {
+  editPropertiesPopup.addEventListener("click", (ev) => {
+    if (
+      ev.target.id !== "editPropertiesPopup" &&
+      ev.target.id !== "editPropertiesPopupCancelBtn" &&
+      ev.target.id !== "editPropertiesPopupCancelBtnIcon"
+    ) {
+      return;
+    }
+    hidePopup();
+  });
+});
+
+export { initPopup, showPopup, hidePopup };

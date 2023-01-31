@@ -75,7 +75,7 @@
             class="popup-wrapper d-flex justify-content-center align-items-center d-none"
             id="editPropertiesPopup"
           >
-            <div class="popup-div">
+            <div class="popup-div" id="editPropertiesPopupChild">
               <div class="card">
                 <img
                   src="${img}"
@@ -136,8 +136,16 @@
                   <button type="button" class="btn btn-success">
                     <i class="bi bi-check-circle-fill"></i> Save
                   </button>
-                  <button type="button" class="btn btn-danger">
-                    <i class="bi bi-x-circle-fill"></i> Cancel
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="editPropertiesPopupCancelBtn"
+                  >
+                    <i
+                      class="bi bi-x-circle-fill"
+                      id="editPropertiesPopupCancelBtnIcon"
+                    ></i>
+                    Cancel
                   </button>
                 </div>
               </div>
