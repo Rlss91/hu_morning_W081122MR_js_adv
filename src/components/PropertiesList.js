@@ -64,15 +64,15 @@ const createItem = (name, description, price, img, id) => {
 const createList = () => {
   let innerHTML = "";
   const handleDeleteBtnClick = (ev) => {
-    let idxFromId = ev.target.id.split("-"); // split the id to array
+    let idFromId = ev.target.id.split("-"); // split the id to array
     if (!ev.target.id) {
       /*
         if press on icon then there is no id
         then we need to take the id of the parent which is btn
       */
-      idxFromId = ev.target.parentElement.id.split("-");
+      idFromId = ev.target.parentElement.id.split("-");
     }
-    deleteProperty(idxFromId[1]);
+    deleteProperty(idFromId[1]);
   };
   //get all old btns
   let deleteBtnsBefore = document.querySelectorAll(

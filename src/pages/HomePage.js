@@ -88,7 +88,7 @@ const initializeBtns = () => {
       propertiesArr = JSON.parse(localStorage.getItem("props")).filter(
         (item) => {
           let reg = regex.test(item.name);
-          console.log("item.name", item.name, " reg", reg);
+          // console.log("item.name", item.name, " reg", reg);
           return reg;
         }
       );
