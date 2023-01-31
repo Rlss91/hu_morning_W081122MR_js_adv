@@ -92,7 +92,7 @@ const initializeBtns = () => {
           return reg;
         }
       );
-      updateDisplayAndLocalStorage(false);
+      updateDisplays();
     });
 };
 
@@ -107,19 +107,25 @@ const displayToDisplay = (toDisplay) => {
   displayNow = toDisplay;
 };
 
-const updateDisplayAndLocalStorage = (save = true) => {
-  if (save) {
-    localStorage.setItem("props", JSON.stringify(propertiesArr)); // update local storage
-  }
+const updateDisplays = () => {
   updatePropertiesGallery(propertiesArr); // update gallery
   updatePropertiesList(propertiesArr); // update list
   updatePropertiesCarousel(propertiesArr); // update carousel
 };
 
-const deleteProperty = (index) => {
-  index = +index; //convert string to number
-  propertiesArr = propertiesArr.filter((item, idx) => idx !== index); //delete property by index
-  updateDisplayAndLocalStorage();
+const saveToLocalStorage = (arrToSave) => {
+  localStorage.setItem("props", JSON.stringify(arrToSave));
+};
+
+const deleteProperty = (id) => {
+  id = +id; //convert string to number
+  let originalPropertiesArr = JSON.parse(localStorage.getItem("props"));
+  originalPropertiesArr = originalPropertiesArr.filter(
+    (item) => item.id !== id
+  );
+  saveToLocalStorage(originalPropertiesArr);
+  propertiesArr = propertiesArr.filter((item) => item.id !== id); //delete property by index
+  updateDisplays();
 };
 
 const sortPropertys = (asc = true) => {
@@ -130,5 +136,5 @@ const sortPropertys = (asc = true) => {
     // from z to a
     propertiesArr.sort((a, b) => b.name.localeCompare(a.name));
   }
-  updateDisplayAndLocalStorage(false);
+  updateDisplays();
 };

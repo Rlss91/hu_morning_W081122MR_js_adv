@@ -24,12 +24,12 @@ const updatePropertiesList = (propertiesArrFromHomePage) => {
   createList();
 };
 
-const createItem = (name, description, price, img, idx) => {
+const createItem = (name, description, price, img, id) => {
   const adminBtns = `
   <button type="button" class="btn btn-warning w-100">
     <i class="bi bi-pen-fill"></i> Edit
   </button>
-  <button type="button" class="btn btn-danger w-100" id="propertyListDeleteBtn-${idx}">
+  <button type="button" class="btn btn-danger w-100" id="propertyListDeleteBtn-${id}">
     <i class="bi bi-x-circle-fill"></i> Delete
   </button>
   `;
@@ -62,7 +62,6 @@ const createItem = (name, description, price, img, idx) => {
 };
 
 const createList = () => {
-  let idx = 0;
   let innerHTML = "";
   const handleDeleteBtnClick = (ev) => {
     let idxFromId = ev.target.id.split("-"); // split the id to array
@@ -90,9 +89,8 @@ const createList = () => {
       property.description,
       property.price,
       property.imgUrl,
-      idx
+      property.id
     );
-    idx++;
   }
   listDiv.innerHTML = innerHTML;
   //add events to new btns
