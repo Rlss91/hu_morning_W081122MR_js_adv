@@ -114,9 +114,11 @@ const createItem = (name, img) => {
 };
 
 const createCarousel = () => {
+  let innerStr = "";
   for (let property of propertiesArr) {
-    carouselDiv.innerHTML += createItem(property.name, property.imgUrl);
+    innerStr += createItem(property.name, property.imgUrl);
   }
+  carouselDiv.innerHTML = innerStr;
   //show the first img
   document
     .querySelector(".img-container > img:nth-child(1)")

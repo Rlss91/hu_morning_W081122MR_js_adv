@@ -85,8 +85,12 @@ const initializeBtns = () => {
     .getElementById("homeDisplaySearch")
     .addEventListener("input", (ev) => {
       let regex = new RegExp("^" + ev.target.value, "ig");
-      propertiesArr = JSON.parse(localStorage.getItem("props")).filter((item) =>
-        regex.test(item.name)
+      propertiesArr = JSON.parse(localStorage.getItem("props")).filter(
+        (item) => {
+          let reg = regex.test(item.name);
+          console.log("item.name", item.name, " reg", reg);
+          return reg;
+        }
       );
       updateDisplayAndLocalStorage(false);
     });

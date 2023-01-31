@@ -49,14 +49,16 @@ const createCard = (name, description, price, img) => {
 };
 
 const createGallery = () => {
+  let innerStr = "";
   for (let property of propertiesArr) {
-    galleryDiv.innerHTML += createCard(
+    innerStr += createCard(
       property.name,
       property.description,
       property.price,
       property.imgUrl
     );
   }
+  galleryDiv.innerHTML = innerStr;
 };
 
 export { initialPropertiesGallery, updatePropertiesGallery };
