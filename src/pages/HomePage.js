@@ -10,6 +10,7 @@ import {
   initialPropertiesCarousel,
   updatePropertiesCarousel,
 } from "../components/PropertiesCarousel.js";
+import { initPopup } from "../components/Popup.js";
 
 let propertiesArr;
 let displayNow; // display that we can see now
@@ -32,7 +33,7 @@ window.addEventListener("load", () => {
   let isAdmin = checkIfAdmin();
   //passing propertiesArr to PropertiesGallery.js
   initialPropertiesGallery(propertiesArr);
-  initialPropertiesList(propertiesArr, isAdmin, deleteProperty);
+  initialPropertiesList(propertiesArr, isAdmin, deleteProperty, showPopup);
   initialPropertiesCarousel(propertiesArr);
   initializeElements();
   initializeBtns();
@@ -137,4 +138,12 @@ const sortPropertys = (asc = true) => {
     propertiesArr.sort((a, b) => b.name.localeCompare(a.name));
   }
   updateDisplays();
+};
+
+const showPopup = (id) => {
+  let selectedProperty = propertiesArr.find((item) => item.id === +id);
+  if (!selectedProperty) {
+    return;
+  }
+  initPopup(selectedProperty);
 };
