@@ -84,7 +84,7 @@ const initializeBtns = () => {
   document
     .getElementById("homeDisplaySearch")
     .addEventListener("input", (ev) => {
-      let regex = new RegExp("^" + ev.target.value, "ig");
+      let regex = new RegExp("^" + ev.target.value, "i");
       propertiesArr = JSON.parse(localStorage.getItem("props")).filter(
         (item) => {
           let reg = regex.test(item.name);
