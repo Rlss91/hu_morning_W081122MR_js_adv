@@ -71,6 +71,78 @@
         <!-- home page -->
         <div id="home-page" class="d-block">
           <h1>Home page</h1>
+          <div
+            class="popup-wrapper d-flex justify-content-center align-items-center"
+            id="editPropertiesPopup"
+          >
+            <div class="popup-div">
+              <div class="card">
+                <img
+                  src="${img}"
+                  class="card-img-top"
+                  alt="${name}"
+                  id="editPropertiesPopupImgDisplay"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editPropertiesPopupName"
+                        placeholder="Name"
+                      />
+                      <label for="editPropertiesPopupName">Name</label>
+                    </div>
+                  </h5>
+                  <div class="card-text">
+                    <div class="form-floating">
+                      <textarea
+                        class="form-control"
+                        placeholder="description"
+                        id="editPropertiesPopupDescription"
+                      ></textarea>
+                      <label for="editPropertiesPopupDescription"
+                        >Description</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editPropertiesPopupPrice"
+                        placeholder="Price"
+                      />
+                      <label for="editPropertiesPopupPrice">Price</label>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editPropertiesPopupImg"
+                        placeholder="Img"
+                      />
+                      <label for="editPropertiesPopupImg">Img</label>
+                    </div>
+                  </li>
+                </ul>
+                <div class="card-body">
+                  <button type="button" class="btn btn-success">
+                    <i class="bi bi-check-circle-fill"></i> Save
+                  </button>
+                  <button type="button" class="btn btn-danger">
+                    <i class="bi bi-x-circle-fill"></i> Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="d-flex justify-content-between mb-2">
             <div>
               <button type="button" class="btn btn-info" id="homeDisplayList">
