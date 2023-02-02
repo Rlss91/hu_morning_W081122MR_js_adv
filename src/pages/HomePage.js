@@ -11,6 +11,7 @@ import {
   updatePropertiesCarousel,
 } from "../components/PropertiesCarousel.js";
 import { initPopup } from "../components/Popup.js";
+import checkIfAdmin from "../utils/checkIfAdmin.js";
 
 let propertiesArr, originalPropertiesArr;
 let displayNow; // display that we can see now
@@ -24,6 +25,8 @@ let propertiesGallery;
 let propertiesList;
 let propertiesCarusel;
 
+let isAdmin;
+
 window.addEventListener("load", () => {
   propertiesArr = localStorage.getItem("props");
   if (!propertiesArr) {
@@ -31,7 +34,7 @@ window.addEventListener("load", () => {
   }
   propertiesArr = JSON.parse(propertiesArr);
   originalPropertiesArr = [...propertiesArr];
-  let isAdmin = checkIfAdmin();
+  isAdmin = checkIfAdmin();
   //passing propertiesArr to PropertiesGallery.js
   initialPropertiesGallery(propertiesArr);
   initialPropertiesList(propertiesArr, isAdmin, deleteProperty, showPopup);
@@ -39,15 +42,6 @@ window.addEventListener("load", () => {
   initializeElements();
   initializeBtns();
 });
-
-const checkIfAdmin = () => {
-  let token = localStorage.getItem("token");
-  if (!token) {
-    return false;
-  }
-  token = JSON.parse(token);
-  return token.isAdmin;
-};
 
 const initializeElements = () => {
   /* btns */
@@ -145,7 +139,21 @@ const showPopup = (id) => {
   initPopup(selectedProperty, editProperty);
 };
 
+const showNewPopup = () => {
+  initPopup(undefined, addNewProperty);
+};
+
+const addNewProperty = (newProperty) => {
+  originalPropertiesArr = [...originalPropertiesArr, newProperty];
+  let nextId = +newProperty.id + 1;
+  localStorage.setItem("nextid", nextId + "");
+  propertiesArr = [...originalPropertiesArr];
+  editProperty();
+};
+
 const editProperty = () => {
   saveToLocalStorage(originalPropertiesArr);
   updateDisplays();
 };
+
+export { showNewPopup };

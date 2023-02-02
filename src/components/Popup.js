@@ -1,3 +1,6 @@
+import Property from "../models/Property.js";
+import getNextId from "../utils/getNextId.js";
+
 let selectedProperty, editProperty;
 const editPropertiesPopupImgDisplay = document.getElementById(
   "editPropertiesPopupImgDisplay"
@@ -20,7 +23,11 @@ const initPopup = (selectedPropertyFromHomePage, editPropertyFromHomePage) => {
   /*
     set data from selectedProperty to html
     */
-  selectedProperty = selectedPropertyFromHomePage;
+  if (selectedPropertyFromHomePage) {
+    selectedProperty = selectedPropertyFromHomePage;
+  } else {
+    selectedProperty = new Property(getNextId(), "", 0, "", "");
+  }
   editProperty = editPropertyFromHomePage;
   editPropertiesPopupImgDisplay.src = selectedProperty.imgUrl;
   editPropertiesPopupName.value = selectedProperty.name;
@@ -56,7 +63,7 @@ window.addEventListener("load", () => {
       selectedProperty.description = editPropertiesPopupDescription.value;
       selectedProperty.price = editPropertiesPopupPrice.value;
       selectedProperty.imgUrl = editPropertiesPopupImg.value;
-      editProperty();
+      editProperty(selectedProperty);
       hidePopup();
     });
   editPropertiesPopupImg.addEventListener("input", () => {
