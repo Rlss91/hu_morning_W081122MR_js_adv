@@ -43,3 +43,13 @@
 .popup-wrapper div div {
   width: 100%;
 }
+
+/* .responsive-mt {
+  margin-top: 0.9rem;
+} */
+
+@media (max-width: 991px) {
+  .responsive-mt {
+    margin-top: 0.9rem;
+  }
+}
