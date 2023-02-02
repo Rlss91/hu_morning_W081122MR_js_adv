@@ -12,7 +12,7 @@ import {
 } from "../components/PropertiesCarousel.js";
 import { initPopup } from "../components/Popup.js";
 
-let propertiesArr;
+let propertiesArr, originalPropertiesArr;
 let displayNow; // display that we can see now
 
 /* btns */
@@ -30,6 +30,7 @@ window.addEventListener("load", () => {
     return;
   }
   propertiesArr = JSON.parse(propertiesArr);
+  originalPropertiesArr = [...propertiesArr];
   let isAdmin = checkIfAdmin();
   //passing propertiesArr to PropertiesGallery.js
   initialPropertiesGallery(propertiesArr);
@@ -81,18 +82,15 @@ const initializeBtns = () => {
     .addEventListener("click", () => {
       sortPropertys(false);
     });
-  //need to fix bug on search again
   document
     .getElementById("homeDisplaySearch")
     .addEventListener("input", (ev) => {
       let regex = new RegExp("^" + ev.target.value, "i");
-      propertiesArr = JSON.parse(localStorage.getItem("props")).filter(
-        (item) => {
-          let reg = regex.test(item.name);
-          // console.log("item.name", item.name, " reg", reg);
-          return reg;
-        }
-      );
+      propertiesArr = originalPropertiesArr.filter((item) => {
+        let reg = regex.test(item.name);
+        // console.log("item.name", item.name, " reg", reg);
+        return reg;
+      });
       updateDisplays();
     });
 };
@@ -120,7 +118,6 @@ const saveToLocalStorage = (arrToSave) => {
 
 const deleteProperty = (id) => {
   id = +id; //convert string to number
-  let originalPropertiesArr = JSON.parse(localStorage.getItem("props"));
   originalPropertiesArr = originalPropertiesArr.filter(
     (item) => item.id !== id
   );
@@ -145,5 +142,9 @@ const showPopup = (id) => {
   if (!selectedProperty) {
     return;
   }
-  initPopup(selectedProperty);
+  initPopup(selectedProperty, editProperty);
+};
+
+const editProperty = () => {
+  updateDisplays();
 };

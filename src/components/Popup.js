@@ -1,3 +1,4 @@
+let selectedProperty, editProperty;
 const editPropertiesPopupImgDisplay = document.getElementById(
   "editPropertiesPopupImgDisplay"
 );
@@ -14,12 +15,13 @@ const editPropertiesPopupImg = document.getElementById(
   "editPropertiesPopupImg"
 );
 const editPropertiesPopup = document.getElementById("editPropertiesPopup");
-let selectedProperty;
-const initPopup = (selectedPropertyFromHomePage) => {
+
+const initPopup = (selectedPropertyFromHomePage, editPropertyFromHomePage) => {
   /*
     set data from selectedProperty to html
     */
   selectedProperty = selectedPropertyFromHomePage;
+  editProperty = editPropertyFromHomePage;
   editPropertiesPopupImgDisplay.src = selectedProperty.imgUrl;
   editPropertiesPopupName.value = selectedProperty.name;
   editPropertiesPopupDescription.value = selectedProperty.description;
@@ -46,6 +48,19 @@ window.addEventListener("load", () => {
       return;
     }
     hidePopup();
+  });
+  document
+    .getElementById("editPropertiesPopupSaveBtn")
+    .addEventListener("click", () => {
+      selectedProperty.name = editPropertiesPopupName.value;
+      selectedProperty.description = editPropertiesPopupDescription.value;
+      selectedProperty.price = editPropertiesPopupPrice.value;
+      selectedProperty.imgUrl = editPropertiesPopupImg.value;
+      editProperty();
+      hidePopup();
+    });
+  editPropertiesPopupImg.addEventListener("input", () => {
+    editPropertiesPopupImgDisplay.src = editPropertiesPopupImg.value;
   });
 });
 
