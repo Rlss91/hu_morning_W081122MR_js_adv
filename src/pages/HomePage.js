@@ -146,5 +146,6 @@ const showPopup = (id) => {
 };
 
 const editProperty = () => {
+  saveToLocalStorage(originalPropertiesArr);
   updateDisplays();
 };
