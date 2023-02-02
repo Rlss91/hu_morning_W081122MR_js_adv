@@ -63,14 +63,31 @@
                 >
               </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form
+              class="d-flex responsive-nav-flex d-none"
+              role="search"
+              id="navBeforeLogin"
+            >
               <a class="nav-link me-3" href="#" id="nav-register-page"
                 >Register</a
               >
+              <a class="nav-link responsive-mt" href="#" id="nav-login-page"
+                >Login</a
+              >
             </form>
-            <form class="d-flex responsive-mt" role="search">
-              <a class="nav-link" href="#" id="nav-login-page">Login</a>
+            <form
+              class="d-flex responsive-nav-flex"
+              role="search"
+              id="navAfterLogin"
+            >
+              <a class="nav-link me-3" href="#" id="nav-edit-profile-page"
+                >Name</a
+              >
+              <a class="nav-link responsive-mt" href="#" id="nav-logout"
+                >Logout</a
+              >
             </form>
+            <!-- <form class="d-flex responsive-mt" role="search"></form> -->
           </div>
         </div>
       </nav>
@@ -345,6 +362,10 @@
             </div>
             <button class="btn btn-primary" id="login-btn">Submit</button>
           </form>
+        </div>
+        <!-- Profile Page -->
+        <div id="profile-page" class="d-none">
+          <h1>Profile page</h1>
         </div>
       </main>
       <footer class="border-top pt-3 d-flex justify-content-center">

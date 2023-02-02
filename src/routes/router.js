@@ -6,6 +6,7 @@ const ABOUTUSPAGELINK = document.getElementById(PAGES.ABOUT);
 const CONTACTUSPAGELINK = document.getElementById(PAGES.CONTACT);
 const LOGINTUSPAGELINK = document.getElementById(PAGES.LOGIN);
 const REGISTERUSPAGELINK = document.getElementById(PAGES.REGISTER);
+const PROFILEPAGELINK = document.getElementById(PAGES.PROFILE);
 
 function handlePageChange(pageToDisplay) {
   /* hide all pages */
@@ -14,11 +15,13 @@ function handlePageChange(pageToDisplay) {
   CONTACTUSPAGELINK.classList.remove("d-block");
   LOGINTUSPAGELINK.classList.remove("d-block");
   REGISTERUSPAGELINK.classList.remove("d-block");
+  PROFILEPAGELINK.classList.remove("d-block");
   HOMEPAGELINK.classList.add("d-none");
   ABOUTUSPAGELINK.classList.add("d-none");
   CONTACTUSPAGELINK.classList.add("d-none");
   LOGINTUSPAGELINK.classList.add("d-none");
   REGISTERUSPAGELINK.classList.add("d-none");
+  PROFILEPAGELINK.classList.add("d-none");
 
   switch (pageToDisplay) {
     case PAGES.HOME:
@@ -40,6 +43,10 @@ function handlePageChange(pageToDisplay) {
     case PAGES.REGISTER:
       REGISTERUSPAGELINK.classList.remove("d-none");
       REGISTERUSPAGELINK.classList.add("d-block");
+      break;
+    case PAGES.PROFILE:
+      PROFILEPAGELINK.classList.remove("d-none");
+      PROFILEPAGELINK.classList.add("d-block");
       break;
   }
 }
