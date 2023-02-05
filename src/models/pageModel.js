@@ -5,6 +5,7 @@ const PAGES = {
   REGISTER: "register-page",
   LOGIN: "login-page",
   PROFILE: "profile-page",
+  PAGE404: "page-not-found-page",
 };
 
 export default PAGES; // let other js pages to access this variable/object
