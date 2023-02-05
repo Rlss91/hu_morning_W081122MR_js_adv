@@ -1,5 +1,3 @@
-import PAGES from "../models/pageModel.js";
-import { handlePageChange } from "../routes/router.js";
 import validateEmail from "../validation/validateEmail.js";
 import validatePassword from "../validation/validatePassword.js";
 import validateName from "../validation/validateName.js";
@@ -15,6 +13,20 @@ let emailOk = false;
 let passwordOk = false;
 
 window.addEventListener("load", () => {
+  let users = localStorage.getItem("users");
+  let token = localStorage.getItem("token");
+  if (users && token) {
+    //we have users
+    users = JSON.parse(users); // convert from string to array of objects
+    token = JSON.parse(token);
+    let user = users.find((item) => item.id === token.id);
+    if (user) {
+      inputName.value = user.name;
+      inputEmail.value = user.email;
+      inputPassword.value = user.password;
+    }
+  }
+
   //when page loaded
   if (inputName.value !== "") {
     checkNameInput();
@@ -122,7 +134,11 @@ btnProfile.addEventListener("click", () => {
       user.email = token.email = inputEmail.value;
       user.password = inputPassword.value;
       localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("token", JSON.stringify(token));
+      showToast("Saved");
     }
   }
-  handlePageChange(PAGES.LOGIN);
+  setTimeout(() => {
+    location.reload();
+  }, 3000);
 });
