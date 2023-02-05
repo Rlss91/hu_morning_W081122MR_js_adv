@@ -4,6 +4,7 @@ import validateEmail from "../validation/validateEmail.js";
 import validatePassword from "../validation/validatePassword.js";
 import validateName from "../validation/validateName.js";
 import User from "../models/User.js";
+import showToast from "../services/Toast.js";
 
 const inputName = document.getElementById("register-input-name");
 const inputEmail = document.getElementById("register-input-email");
@@ -160,7 +161,7 @@ btnRegister.addEventListener("click", () => {
     for (let user of users) {
       if (user.email === inputEmail.value) {
         //display msg - email already exists
-        console.log("email already exists");
+        showToast("Email already exists", false);
         return;
       }
     }
