@@ -132,11 +132,15 @@ btnRegister.addEventListener("click", () => {
     return;
   }
   let users = localStorage.getItem("users");
+  let nextUserId = localStorage.getItem("nextUserId");
+  nextUserId = +nextUserId;
   let newUser = new User(
+    nextUserId++,
     inputName.value,
     inputEmail.value,
     inputPassword.value
   );
+  localStorage.setItem("nextUserId", nextUserId + "");
   if (!users) {
     //the first user
     users = [newUser];

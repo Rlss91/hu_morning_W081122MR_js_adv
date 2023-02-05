@@ -366,6 +366,59 @@
         <!-- Profile Page -->
         <div id="profile-page" class="d-none">
           <h1>Profile page</h1>
+          <form onsubmit="event.preventDefault()">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="register-input-name"
+                placeholder="Your name"
+              />
+              <label for="register-input-name">Name</label>
+            </div>
+            <div
+              class="alert alert-danger d-none"
+              role="alert"
+              id="register-alert-name"
+            >
+              Name rules
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="register-input-email"
+                placeholder="name@example.com"
+              />
+              <label for="register-input-email">Email address</label>
+            </div>
+            <div
+              class="alert alert-danger d-none"
+              role="alert"
+              id="register-alert-email"
+            >
+              Email rules
+            </div>
+            <div class="form-floating">
+              <input
+                type="password"
+                class="form-control"
+                id="register-input-password"
+                placeholder="Password"
+              />
+              <label for="register-input-password">Password</label>
+            </div>
+            <div
+              class="alert alert-danger d-none"
+              role="alert"
+              id="register-alert-password"
+            >
+              Name rules
+            </div>
+            <button class="btn btn-danger" disabled="true" id="register-btn">
+              Register
+            </button>
+          </form>
         </div>
       </main>
       <footer class="border-top pt-3 d-flex justify-content-center">
