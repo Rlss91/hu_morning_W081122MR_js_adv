@@ -12,7 +12,7 @@ let navAddNewPropertyLink;
 const navBeforeLogin = document.getElementById("navBeforeLogin");
 const navAfterLogin = document.getElementById("navAfterLogin");
 
-const initializeNavbar = (showPopupFromHomePage) => {
+const initializeNavbar = (showPopupFromApp) => {
   nextId = getNextId();
   isAdmin = checkIfAdmin();
   isConnected = checkIfConnected();
@@ -20,7 +20,7 @@ const initializeNavbar = (showPopupFromHomePage) => {
     navBeforeLogin.classList.add("d-none");
     navAfterLogin.classList.remove("d-none");
   }
-  showPopup = showPopupFromHomePage;
+  showPopup = showPopupFromApp;
   /* nav */
   navAddNewPropertyLink = document.getElementById("nav-add-new-property-link");
   if (!isAdmin) {
