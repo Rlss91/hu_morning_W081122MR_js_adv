@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="item-1" onclick="handleDivClick(event)">
+      1
+      <div>
+        2
+        <div>
+          3
+          <div>
+            4
+            <button>click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="item-2" onclick="handleDivClick(event)">
+      1
+      <div>
+        2
+        <div>
+          3
+          <div>
+            4
+            <button>click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="item-3" onclick="handleDivClick(event)">
+      1
+      <div>
+        2
+        <div>
+          3
+          <div>
+            4
+            <button>click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="item-4" onclick="handleDivClick(event)">
+      1
+      <div>
+        2
+        <div>
+          3
+          <div>
+            4
+            <button>click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="item-5" onclick="handleDivClick(event)">
+      1
+      <div>
+        2
+        <div>
+          3
+          <div>
+            4
+            <button>click me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const handleDivClick = (ev) => {
+        // console.log(document);
+        // console.log(ev);
+        let elm = ev.target;
+        // let elm = document.querySelector("[id^='item']");
+        // console.log(elm);
+        let regex = new RegExp("^item-");
+        while (!regex.test(elm.id) && elm != null) {
+          elm = elm.parentElement;
+        }
+        if (!elm) {
+          return;
+        }
+        console.log(elm);
+      };
+    </script>
+  </body>
+</html>
