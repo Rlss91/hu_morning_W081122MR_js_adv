@@ -10,5 +10,17 @@
     <button>click me</button>
     <!-- <script src="./promise.js"></script> -->
     <script src="./hw.js"></script>
+    <script>
+      let newp = new Promise((ok, not) => {
+        not("errrorrrrrrr");
+      });
+      (async () => {
+        // try {
+        await newp;
+        // } catch (err) {
+        alert(err);
+        // }
+      })();
+    </script>
   </body>
 </html>

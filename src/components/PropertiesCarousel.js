@@ -15,8 +15,8 @@ const updatePropertiesCarousel = (propertiesArrFromHomePage) => {
     if the carousel already exists it will remove the old one and
     create new one
   */
-  showIdx = 0;
-  animationStarted = 0;
+  showIdx = 0; //starting index
+  animationStarted = 0; //we waiting for 0 animations
   propertiesArr = propertiesArrFromHomePage;
   createCarousel();
 };
@@ -66,16 +66,21 @@ const initializeBtns = () => {
     if (animationStarted !== 0) {
       return;
     }
-    animationStarted = 2;
+    animationStarted = 2; // the number should be as the number of the animations that we waiting for
     let nextIdx = showIdx + 1;
     //showIdx = index of image to hide
     //nextIdx = index of image to display
     if (nextIdx >= propertiesArr.length) {
+      /*
+        if we now in the last position
+        the next id should be 0 because it is
+        the next id :)
+      */
       nextIdx = 0;
     }
     let imgToHide = document.querySelector(
       `.img-container > img:nth-child(${showIdx + 1})`
-    );
+    ); //children start from 1
     imgToHide.classList.add("fade-out");
     const hideImgAnim = () => {
       imgToHide.removeEventListener("animationend", hideImgAnim); //remove event after executed
@@ -116,7 +121,7 @@ const createItem = (name, img) => {
 const createCarousel = () => {
   let innerStr = "";
   for (let property of propertiesArr) {
-    innerStr += createItem(property.name, property.imgUrl);
+    innerStr += createItem(property.name, property.imgUrl); // append, string concatenation
   }
   carouselDiv.innerHTML = innerStr;
   //show the first img

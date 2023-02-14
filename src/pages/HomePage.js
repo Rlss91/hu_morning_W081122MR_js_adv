@@ -153,7 +153,7 @@ const addNewProperty = (newProperty) => {
 
 const editProperty = () => {
   saveToLocalStorage(originalPropertiesArr);
-  updateDisplays();
+  updateDisplays(); // update html
 };
 
 export { showNewPopup };
